@@ -31,6 +31,7 @@ namespace ProteoWPFSuite
         public Quantification quantification = new Quantification();//Finished
         public IdentifiedProteoforms identifiedProteoforms = new IdentifiedProteoforms(); //Finished
         public ResultsSummary resultsSummary = new ResultsSummary();//No
+        public SpectrumViewer spectrumViewer = new SpectrumViewer();
         public List<ISweetForm> forms = new List<ISweetForm>(); //contains a list of user controls
         #endregion Public Fields
 
@@ -99,7 +100,9 @@ namespace ProteoWPFSuite
                 proteoformFamilies,
                 identifiedProteoforms,    
                 quantification,
-                resultsSummary
+                resultsSummary,
+                spectrumViewer
+
             };
             foreach (UserControl uc in forms)
             {
@@ -542,6 +545,11 @@ namespace ProteoWPFSuite
                     resultsSummary.InitializeParameterSet();
                     resultsSummary.create_summary();
                     showForm(resultsSummary);
+                    break;
+
+                case "Spectrum Viewer":
+                    spectrumViewer.InitializeFromProteoformSuiteData(Sweet.lollipop.target_proteoform_community);
+                    showForm(spectrumViewer);
                     break;
 
                 default:
